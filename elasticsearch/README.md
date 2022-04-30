@@ -40,8 +40,9 @@ curl -XGET 'localhost:9200/_cat/indices?v&pretty'
 # Adding docs
 ```` bash
 # first mobile
-curl -XPUT 'localhost:9200/products/mobiles/1?pretty' -H 'Content-Type: application/json' -d'
+curl -XPUT 'localhost:9200/products/product/1?pretty' -H 'Content-Type: application/json' -d'
 {
+    "type": "mobile",
     "name": "iPhone 7",
     "camera": "12MP",
     "storage": "256GB",
@@ -51,8 +52,9 @@ curl -XPUT 'localhost:9200/products/mobiles/1?pretty' -H 'Content-Type: applicat
 }
 '
 # 2nd mobile
-curl -XPUT 'localhost:9200/products/mobiles/2?pretty' -H 'Content-Type: application/json' -d'
+curl -XPUT 'localhost:9200/products/product/2?pretty' -H 'Content-Type: application/json' -d'
 {
+    "type": "mobile",    
     "name": "Samsung Galaxy",
     "camera": "8MP",
     "storage": "128GB",
@@ -62,8 +64,9 @@ curl -XPUT 'localhost:9200/products/mobiles/2?pretty' -H 'Content-Type: applicat
 }
 '
 # 3rd mobile
-curl -XPUT 'localhost:9200/products/mobiles/3?pretty' -H 'Content-Type: application/json' -d'
+curl -XPUT 'localhost:9200/products/product/3?pretty' -H 'Content-Type: application/json' -d'
 {
+    "type": "mobile",    
     "name": "Xiaomi Note",
     "camera": "10MP",
     "storage": "128GB",
@@ -72,4 +75,36 @@ curl -XPUT 'localhost:9200/products/mobiles/3?pretty' -H 'Content-Type: applicat
     "reviews": ["Great phone", "Too big"] 
 }
 '
+# Laptops 
+curl -XPUT 'localhost:9200/products/product/4?pretty' -H 'Content-Type: application/json' -d'
+{
+    "type": "laptop",
+    "name": "Macbook Pro",
+    "storage": "500GB",
+    "RAM": "8GB",
+    "display": "13inch",
+    "os": "El Capitan",
+    "reviews": ["great laptop", "another comment..."] 
+}
+'
+
+curl -XPUT 'localhost:9200/products/product/5?pretty' -H 'Content-Type: application/json' -d'
+{
+    "type": "laptop",    
+    "name": "Dell",
+    "storage": "1TB",
+    "RAM": "8GB",
+    "display": "14inch",
+    "os": "Windows 10",
+    "reviews": ["great laptop", "light"] 
+}
+'
+
+````
+
+# Retrieving
+```` bash
+curl -XGET 'localhost:9200/products/product/1?pretty'
+curl -XGET 'localhost:9200/products/product/1?pretty&_source=false'
+curl -XGET 'localhost:9200/products/product/1?pretty&_source=name,reviews'
 ````
