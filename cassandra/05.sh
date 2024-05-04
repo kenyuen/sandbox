@@ -1,4 +1,5 @@
 # nodes; nodetool
+cd /home/ubuntu/node/resources/cassandra/bin
 
 ./nodetool status
 ./nodetool info
