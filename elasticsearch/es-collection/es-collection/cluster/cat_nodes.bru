@@ -1,0 +1,19 @@
+meta {
+  name: cat_nodes
+  type: http
+  seq: 3
+}
+
+get {
+  url: {{host}}/_cat/nodes?v
+  body: none
+  auth: inherit
+}
+
+params:query {
+  v: 
+}
+
+settings {
+  encodeUrl: true
+}

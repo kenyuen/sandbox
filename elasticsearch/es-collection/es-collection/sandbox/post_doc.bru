@@ -1,0 +1,15 @@
+meta {
+  name: post_doc
+  type: http
+  seq: 3
+}
+
+post {
+  url: {{host}}/{{index}}/_doc
+  body: none
+  auth: inherit
+}
+
+settings {
+  encodeUrl: true
+}

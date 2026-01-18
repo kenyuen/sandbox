@@ -1,0 +1,20 @@
+meta {
+  name: cat_shards
+  type: http
+  seq: 5
+}
+
+get {
+  url: {{host}}/_cat/indices?v
+  body: none
+  auth: inherit
+}
+
+params:query {
+  v: 
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

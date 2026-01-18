@@ -1,0 +1,24 @@
+meta {
+  name: upsert_doc
+  type: http
+  seq: 6
+}
+
+post {
+  url: {{host}}/{{index}}/_update/100
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "doc": {
+      "in_stock" : 5
+    }  
+  }
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

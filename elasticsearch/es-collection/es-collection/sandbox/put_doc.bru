@@ -1,0 +1,15 @@
+meta {
+  name: put_doc
+  type: http
+  seq: 4
+}
+
+put {
+  url: {{host}}/{{index}}/
+  body: none
+  auth: inherit
+}
+
+settings {
+  encodeUrl: true
+}

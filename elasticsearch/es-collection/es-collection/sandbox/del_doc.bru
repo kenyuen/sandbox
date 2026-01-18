@@ -1,0 +1,15 @@
+meta {
+  name: del_doc
+  type: http
+  seq: 9
+}
+
+delete {
+  url: {{host}}/{{index}}/_doc/100
+  body: none
+  auth: inherit
+}
+
+settings {
+  encodeUrl: true
+}

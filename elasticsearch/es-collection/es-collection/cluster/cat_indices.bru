@@ -1,0 +1,20 @@
+meta {
+  name: cat_indices
+  type: http
+  seq: 4
+}
+
+get {
+  url: {{host}}/_cat/nodes?v
+  body: none
+  auth: inherit
+}
+
+params:query {
+  v: 
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

@@ -1,0 +1,20 @@
+meta {
+  name: es_health
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{host}}/_cat/health?h=status
+  body: none
+  auth: inherit
+}
+
+params:query {
+  h: status
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

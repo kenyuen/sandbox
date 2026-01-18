@@ -1,0 +1,16 @@
+meta {
+  name: put_index
+  type: http
+  seq: 1
+}
+
+put {
+  url: {{host}}/dummy
+  body: none
+  auth: inherit
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}
