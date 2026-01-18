@@ -1,9 +1,4 @@
-# Running Locally
-````
-docker-compose up -d
-
-docker-compose down -v
-````
+# Elasticsearch Docker Compose
 
 # HTTP Health checks
 To access:
