@@ -1,4 +1,4 @@
-version: '2.2'
+version: '3.8'
 services:
   es01:
     image: "${ES_IMAGE:-docker.elastic.co/elasticsearch/elasticsearch:7.17.11}"
@@ -23,8 +23,6 @@ services:
       start_period: 10s
     volumes:
       - data01:/usr/share/elasticsearch/data
-    ports:
-      - 9200:9200
     networks:
       - elastic
 
@@ -105,6 +103,34 @@ services:
       - data04:/usr/share/elasticsearch/data
     networks:
       - elastic
+
+  node-proxy:
+    image: local/node-proxy:latest
+    build:
+      context: ./node-proxy
+      dockerfile: Dockerfile
+    container_name: node-proxy
+    restart: unless-stopped
+    ports:
+      - "9200:9200"
+    environment:
+      - UPSTREAM_NODES=es01:9200,es02:9200,es03:9200,es04:9200
+      - CHECK_INTERVAL=5
+      - CHECK_TIMEOUT=2
+      - MIN_HEALTHY=1
+    healthcheck:
+      test: ["CMD-SHELL", "curl -fsS http://localhost:9200/_cat/health?h=status | grep -E 'green|yellow' || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+    networks:
+      - elastic
+    depends_on:
+      - es01
+      - es02
+      - es03
+      - es04
 
 volumes:
   data01:
